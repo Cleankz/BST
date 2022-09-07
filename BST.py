@@ -1,3 +1,4 @@
+import random
 class BSTNode:
 
     def __init__(self, key, val, parent):
@@ -86,10 +87,11 @@ class BST:
             return FromNode
 
     def DeleteNodeByKey(self, key):
-        self.FindNodeByKey(key)
-        del_node = BSTFind.Node
-        if BSTFind.NodeHasKey == False:
-            return False
+        del_node = self.FindNodeByKey(key)
+        if del_node[1] == True:
+            del_node = del_node[0]
+        else:
+                return False
         if del_node.LeftChild == None and del_node.RightChild == None and del_node.Parent == None:
             self.Root = None
             BSTFind.Node = None
@@ -190,3 +192,13 @@ class BST:
             return self.counter(self.Root, 0) # количество узлов в дереве
         except:
             return 0
+# node = BSTNode(random.randint(0,50),random.randint(0,50),None)
+# tree = BST(node)
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
