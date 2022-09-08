@@ -205,14 +205,15 @@ class BST:
             return self.counter(self.Root, 0) # количество узлов в дереве
         except:
             return 0
-node = BSTNode(random.randint(0,50),random.randint(0,50),None)
-tree = BST(node)
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
-tree.DeleteNodeByKey(random.randint(0,5))
+
+# node = BSTNode(random.randint(0,50),random.randint(0,50),None)
+# tree = BST(node)
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.AddKeyValue(random.randint(0,5),random.randint(0,5))
+# tree.DeleteNodeByKey(random.randint(0,5))
