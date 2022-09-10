@@ -159,6 +159,18 @@ class BST:
                 self.Root = delet_node.LeftChild
                 delet_node.LeftChild.Parent = None
 
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is None\
+                and delet_node.LeftChild is None\
+                and delet_node.Parent.LeftChild == delet_node:
+                    delet_node.Parent.LeftChild = None
+
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is None\
+                and delet_node.LeftChild is None\
+                and delet_node.Parent.RightChild == delet_node:
+                    delet_node.Parent.RightChild = None
+
 
             # если удаляем корень и нет потомков
             elif delet_node.Parent is None \
@@ -225,17 +237,17 @@ class BST:
         except:
             return 0
 
-# node = BSTNode(15,random.randint(0,50),None)
+# node = BSTNode(20,random.randint(0,50),None)
 # tree = BST(node)
-# # # tree.DeleteNodeByKey(5)
+# # # # tree.DeleteNodeByKey(5)
 # tree.AddKeyValue(10,50)
 # tree.AddKeyValue(15,55)
-# # tree.AddKeyValue(8,30)
+# # # tree.AddKeyValue(8,30)
 # tree.AddKeyValue(11,30)
-# # tree.AddKeyValue(7,30)
-# tree.AddKeyValue(16,30)
-# tree.AddKeyValue(12,30)
-# tree.DeleteNodeByKey(10)
+# # # tree.AddKeyValue(7,30)
+# # tree.AddKeyValue(16,30)
+# # tree.AddKeyValue(12,30)
+# tree.DeleteNodeByKey(11)
 # # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
 # # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
 # # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
