@@ -28,6 +28,7 @@ class BST:
     def FindByKey_node(self, key, node):
         if key == node.NodeKey:
             return [node, False, False]
+
         if node.LeftChild is not None and key < node.NodeKey:
             return self.FindByKey_node(key, node.LeftChild)
 
@@ -109,7 +110,7 @@ class BST:
             elif delet_node.Parent is not None \
                 and delet_node.RightChild is not None \
                 and delet_node.LeftChild is None\
-                and delet_node.Parent.RightChild is  not None: # левый подкорень
+                and delet_node.Parent.RightChild is None: # левый подкорень
                 delet_node.Parent.LeftChild = delet_node.RightChild
                 delet_node.RightChild.Parent = delet_node.Parent
 
@@ -125,13 +126,6 @@ class BST:
                 and delet_node.RightChild is None \
                 and delet_node.LeftChild is not None\
                 and delet_node.Parent.LeftChild is None: # правый подкорень
-                delet_node.Parent.RightChild = delet_node.LeftChild
-                delet_node.LeftChild.Parent = delet_node.Parent
-
-            elif delet_node.Parent is not None\
-                and delet_node.RightChild is None \
-                and delet_node.LeftChild is not None\
-                and delet_node.Parent.LeftChild is  not None: # правый подкорень
                 delet_node.Parent.RightChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = delet_node.Parent
 
@@ -210,6 +204,39 @@ class BST:
                 new_node.LeftChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = new_node
                 self.Root = new_node
+
+             #если удаляем левого потомка узла у которого есть только левый потомок
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is None\
+                and delet_node.LeftChild is not None\
+                and delet_node.Parent.LeftChild is delet_node:
+                    delet_node.LeftChild.Parent = delet_node.Parent
+                    delet_node.Parent.LeftChild = delet_node.LeftChild
+                    delet_node.Parent = None
+            #если удаляем левого потомка узла у которого есть только правый потомок
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is not None\
+                and delet_node.LeftChild is None\
+                and delet_node.Parent.LeftChild is delet_node:
+                    delet_node.RightChild.Parent = delet_node.Parent
+                    delet_node.Parent.LeftChild = delet_node.RightChild
+                    delet_node.Parent = None
+            #если удаляем правого потомка узла у которого есть только левый потомок
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is  None\
+                and delet_node.LeftChild is not None\
+                and delet_node.Parent.RightChild is delet_node:
+                    delet_node.LeftChild.Parent = delet_node.Parent
+                    delet_node.Parent.RightChild = delet_node.LeftChild
+                    delet_node.Parent = None
+            #если удаляем правого потомка узла у которого есть только правый потомок
+            elif delet_node.Parent is not None\
+                and delet_node.RightChild is not None\
+                and delet_node.LeftChild is None\
+                and delet_node.Parent.RightChild is delet_node:
+                    delet_node.RightChild.Parent = delet_node.Parent
+                    delet_node.Parent.RightChild = delet_node.RightChild
+                    delet_node.Parent = None
 
             # 11 если удаляем левого потомка
             elif delet_node.Parent is self.Root and self.Root.LeftChild == delet_node:
