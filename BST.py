@@ -27,7 +27,7 @@ class BST:
 
     def FindByKey_node(self, key, node):
         if key == node.NodeKey:
-            return [node, False, False] # 1 - былоTrue !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return [node, False, False]
         if node.LeftChild is not None and key < node.NodeKey:
             return self.FindByKey_node(key, node.LeftChild)
 
@@ -41,8 +41,7 @@ class BST:
             return [node, False, False]
         else:
             return [node,None,False]
-        # if key == node.NodeKey and node.LeftChild is not None:
-        #     return [node, True, False] # 1 - былоTrue !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! or node.RightChild is not None
+
 
 
     def FindNodeByKey(self, key):
@@ -190,7 +189,7 @@ class BST:
                 delet_node.LeftChild.Parent = new_node
                 delet_node.Parent.LeftChild = new_node
 
-            # ? если удаляем правый подкорень и есть оба потомка
+            #  если удаляем правый подкорень и есть оба потомка
             elif delet_node.Parent is not None\
                 and delet_node.RightChild is not None\
                 and delet_node.LeftChild is not None\
@@ -199,10 +198,10 @@ class BST:
                 new_node.Parent = delet_node.Parent
                 new_node.LeftChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = new_node
-                delet_node.Parent.RightChild = new_node # есть отличие
+                delet_node.Parent.RightChild = new_node
 
 
-            # ?10  если удаляем корень и есть оба потомка
+            # 10  если удаляем корень и есть оба потомка
             elif delet_node.Parent is None\
                 and delet_node.RightChild is not None\
                 and delet_node.LeftChild is not None:
@@ -239,26 +238,27 @@ class BST:
 
 # node = BSTNode(20,random.randint(0,50),None)
 # tree = BST(node)
-# # # # tree.DeleteNodeByKey(5)
+# # tree.DeleteNodeByKey(20)
+# # print(tree.Count())
 # tree.AddKeyValue(10,50)
-# tree.AddKeyValue(15,55)
-# # # tree.AddKeyValue(8,30)
+# tree.AddKeyValue(28,55)
+# tree.AddKeyValue(8,30)
 # tree.AddKeyValue(11,30)
-# # # tree.AddKeyValue(7,30)
-# # tree.AddKeyValue(16,30)
-# # tree.AddKeyValue(12,30)
-# tree.DeleteNodeByKey(11)
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.AddKeyValue(random.randint(0,5),random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
-# # # tree.DeleteNodeByKey(random.randint(0,50))
+# tree.AddKeyValue(7,30)
+# tree.AddKeyValue(26,30)
+# tree.AddKeyValue(29,30)
+# tree.DeleteNodeByKey(28)
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(random.randint(0,50))
 # print(tree.Count())
