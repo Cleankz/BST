@@ -49,16 +49,16 @@ class BST:
         # return None # возвращает BSTFind
 
         find_node = self.FindByKey_node(key, self.Root)
-        BSTF_ekz = BSTFind()
+        BSTFnd = BSTFind()
 
-        BSTF_ekz.Node = find_node[0]
-        BSTF_ekz.NodeHasKey = find_node[1]
-        BSTF_ekz.ToLeft = find_node[2]
+        BSTFnd.Node = find_node[0]
+        BSTFnd.NodeHasKey = find_node[1]
+        BSTFnd.ToLeft = find_node[2]
 
         find_node_list = []
-        find_node_list.append(BSTF_ekz.Node)
-        find_node_list.append(BSTF_ekz.NodeHasKey)
-        find_node_list.append(BSTF_ekz.ToLeft)
+        find_node_list.append(BSTFnd.Node)
+        find_node_list.append(BSTFnd.NodeHasKey)
+        find_node_list.append(BSTFnd.ToLeft)
         return find_node_list
 
     def init_new_node(self, new_key, new_val, new_parent, ToLeft):
