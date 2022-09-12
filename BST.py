@@ -274,6 +274,8 @@ class BST:
             return False # если узел не найден
 
     def counter(self, node, count_number) -> int:
+        if self.Root == None:
+            return 0
         count_number += 1
         if node.LeftChild is not None:
             count_number = self.counter(node.LeftChild, count_number)
@@ -282,34 +284,20 @@ class BST:
         return count_number
 
     def Count(self) -> int:
-        try:
-            return self.counter(self.Root, 0) # количество узлов в дереве
-        except:
-            return 0
+        return self.counter(self.Root, 0) # количество узлов в дереве
+        # try:
+        #     return self.counter(self.Root, 0) # количество узлов в дереве
+        # except:
+        #     return 0
 
 # node = BSTNode(20,random.randint(0,50),None)
 # tree = BST(node)
-# # # # tree.DeleteNodeByKey(20)
-# # # # print(tree.Count())
-# tree.AddKeyValue(10,50)
-# tree.AddKeyValue(0,564)
-# tree.AddKeyValue(5495415612156165210321568,30)
-# tree.AddKeyValue(11,30)
-# tree.AddKeyValue(7,30)
-# tree.AddKeyValue(26,30)
-# tree.AddKeyValue(29,30)
-# tree.DeleteNodeByKey(28)
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.AddKeyValue(random.randint(0,50),random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
-# tree.DeleteNodeByKey(random.randint(0,50))
+# tree.DeleteNodeByKey(20)
+# print(tree.Count())
+# tree.AddKeyValue(19,5) # недобавляетпочему-торавные ключи
+# tree.AddKeyValue(14,5)
+# tree.AddKeyValue(16,5)
+# tree.AddKeyValue(13,5)
+# tree.DeleteNodeByKey(13)
+# tree.DeleteNodeByKey(14)
 # print(tree.Count())
