@@ -40,8 +40,10 @@ class BST:
 
         elif node.RightChild is None and key > node.NodeKey:
             return [node, False, False]
-        else:
-            return [node,None,False]
+
+        elif node.Parent is None and node.LeftChild is None and node.RightChild is None :
+                return[node,None,False]
+
 
 
 
