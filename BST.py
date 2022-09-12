@@ -290,11 +290,14 @@ class BST:
         # except:
         #     return 0
 
-# node = BSTNode(20,random.randint(0,50),None)
+# node = BSTNode(10,random.randint(0,50),None)
 # tree = BST(node)
-# # недобавляетпочему-торавные ключи
-# for i in range(20):
+# for i in range(9,0,-1):
 #     tree.AddKeyValue(i,5)
+# tree.AddKeyValue(11,5)
+# print(tree.Count())
+# tree.DeleteNodeByKey(8)
+# print(tree.Count())
 # for j in range(20):
 #     tree.DeleteNodeByKey(j)
 #     print(tree.Count())
