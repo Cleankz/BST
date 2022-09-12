@@ -71,6 +71,9 @@ class BST:
 
     def AddKeyValue(self, key, val) -> boolean:
         # добавляем ключ-значение в дерево
+        if self.Root == None:
+            self.Root = BSTNode(key,val,None)
+            return True
         find_node_list = self.FindNodeByKey(key)
         if find_node_list[1] == False:
             self.init_new_node(key, val, find_node_list[0], find_node_list[2])
