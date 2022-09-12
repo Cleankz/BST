@@ -76,6 +76,14 @@ class MyTests(unittest.TestCase):
         self.assertEqual(tree.AddKeyValue(21,random.randint(0,50)),False)# возвращает False если ключ уже есть
         self.assertEqual(tree.Count(),3)
 
+    def test_addKeyValue_zero(self):
+        root = BSTNode(20,random.randint(0,50),None)
+        tree = BST(root)
+        self.assertEqual(tree.Count(),1)
+        tree.DeleteNodeByKey(20)
+        self.assertEqual(tree.Count(),0)
+        tree.AddKeyValue(50,6)
+
     def test_findByKey(self):
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
