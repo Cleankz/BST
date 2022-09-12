@@ -59,7 +59,7 @@ class BST:
         find_node_list.append(BSTFnd.Node)
         find_node_list.append(BSTFnd.NodeHasKey)
         find_node_list.append(BSTFnd.ToLeft)
-        return find_node_list
+        return BSTFnd
 
     def init_new_node(self, new_key, new_val, new_parent, ToLeft) -> None:
         new_node = BSTNode(new_key, new_val, new_parent)
@@ -75,10 +75,10 @@ class BST:
             self.Root = BSTNode(key,val,None)
             return True
         find_node_list = self.FindNodeByKey(key)
-        if find_node_list[1] == False:
-            self.init_new_node(key, val, find_node_list[0], find_node_list[2])
+        if find_node_list.NodeHasKey == False:
+            self.init_new_node(key, val, find_node_list.Node, find_node_list.ToLeft)
 
-        if find_node_list[1] == True:
+        if find_node_list.NodeHasKey == True:
             return False # если ключ уже есть
         return True
 
@@ -100,8 +100,8 @@ class BST:
         if self.Root == None:
             return False
         delet_node = self.FindNodeByKey(key)
-        if delet_node[1] == True:
-            delet_node = delet_node[0]
+        if delet_node.NodeHasKey == True:
+            delet_node = delet_node.Node
 
             # если удаляем правый подкорень и есть только правый потомок
             if delet_node.Parent is not None \
