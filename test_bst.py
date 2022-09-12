@@ -8,7 +8,8 @@ class MyTests(unittest.TestCase):
         # проверяем что дерево пустое и в нем нет узлов
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
-        self.assertEqual(tree.DeleteNodeByKey(20),None)# возвращает None если удалось удалить корень
+        tree.DeleteNodeByKey(20)
+        self.assertEqual(tree.DeleteNodeByKey(20),False)# возвращает False если  не удалось удалить корень
         self.assertEqual(tree.Root,None)
         self.assertEqual(tree.Count(),0) # число узлов в дереве
 
@@ -73,11 +74,13 @@ class MyTests(unittest.TestCase):
         tree = BST(root)
         tree.AddKeyValue(19,random.randint(0,50))
         tree.AddKeyValue(21,random.randint(0,50))
+        self.assertEqual(tree.AddKeyValue(21,random.randint(0,50)),False)
         self.assertEqual(tree.Count(),3)
     def test_findByKey(self):
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
-        self.assertEqual(tree.FindNodeByKey(20)[1],False)
+        self.assertEqual(tree.FindNodeByKey(20)[1],True)
+        self.assertEqual(tree.FindNodeByKey(50566)[1],False)
     def test_count(self):
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
