@@ -61,6 +61,22 @@ class MyTests(unittest.TestCase):
         tree.AddKeyValue(27,random.randint(0,50))
         tree.DeleteNodeByKey(24)
         self.assertEqual(tree.Root.RightChild.NodeKey,27)
+    def test_add_key_value(self):
+        root = BSTNode(20,random.randint(0,50),None)
+        tree = BST(root)
+        tree.AddKeyValue(19,random.randint(0,50))
+        tree.AddKeyValue(21,random.randint(0,50))
+        self.assertEqual(tree.Count(),3)
+    def test_findByKey(self):
+        root = BSTNode(20,random.randint(0,50),None)
+        tree = BST(root)
+        self.assertEqual(tree.FindNodeByKey(20)[1],False)
+    def test_count(self):
+        root = BSTNode(20,random.randint(0,50),None)
+        tree = BST(root)
+        tree.AddKeyValue(19,random.randint(0,50))
+        tree.AddKeyValue(21,random.randint(0,50))
+        self.assertEqual(tree.Count(),3)
 
 if __name__ == '__main__':
     unittest.main()
