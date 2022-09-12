@@ -77,6 +77,7 @@ class BST:
 
         if find_node_list[1] == True:
             return False # если ключ уже есть
+        return True
 
     def FinMinMax(self, FromNode, FindMax) -> BSTNode:
         # ищем максимальный/минимальный ключ в поддереве
