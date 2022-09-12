@@ -3,7 +3,7 @@ from xmlrpc.client import Boolean, boolean
 import typing
 class BSTNode:
 
-    def __init__(self, key:int, val:int,parent):
+    def __init__(self, key, val,parent):
         self.NodeKey = key # ключ узла
         self.NodeValue = val # значение в узле
         self.Parent = parent # родитель или None для корня
@@ -286,11 +286,11 @@ class BST:
 
 # node = BSTNode(20,random.randint(0,50),None)
 # tree = BST(node)
-# # tree.DeleteNodeByKey(20)
-# # print(tree.Count())
+# # # # tree.DeleteNodeByKey(20)
+# # # # print(tree.Count())
 # tree.AddKeyValue(10,50)
-# tree.AddKeyValue(28,55)
-# tree.AddKeyValue(8,30)
+# tree.AddKeyValue(0,564)
+# tree.AddKeyValue(5495415612156165210321568,30)
 # tree.AddKeyValue(11,30)
 # tree.AddKeyValue(7,30)
 # tree.AddKeyValue(26,30)
