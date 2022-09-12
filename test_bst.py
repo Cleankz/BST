@@ -8,8 +8,9 @@ class MyTests(unittest.TestCase):
         # проверяем что дерево пустое и в нем нет узлов
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
-        tree.DeleteNodeByKey(20)
+        self.assertEqual(tree.DeleteNodeByKey(20),None) # возвращает None если удалось удалить корень
         self.assertEqual(tree.Root,None)
+        self.assertEqual(tree.Count(),0) # число узлов в дереве
 
         tree = BST(root)
         tree.AddKeyValue(19,random.randint(0,50))
