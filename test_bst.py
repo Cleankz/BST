@@ -87,8 +87,8 @@ class MyTests(unittest.TestCase):
     def test_findByKey(self):
         root = BSTNode(20,random.randint(0,50),None)
         tree = BST(root)
-        self.assertEqual(tree.FindNodeByKey(20)[1],True)
-        self.assertEqual(tree.FindNodeByKey(50566)[1],False)
+        self.assertEqual(tree.FindNodeByKey(20).NodeHasKey,True)
+        self.assertEqual(tree.FindNodeByKey(50566).NodeHasKey,False)
 
     def test_count(self):
         root = BSTNode(20,random.randint(0,50),None)
