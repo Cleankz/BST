@@ -1,7 +1,9 @@
 import random
+from xmlrpc.client import Boolean, boolean
+import typing
 class BSTNode:
 
-    def __init__(self, key, val, parent):
+    def __init__(self, key:int, val:int,parent):
         self.NodeKey = key # ключ узла
         self.NodeValue = val # значение в узле
         self.Parent = parent # родитель или None для корня
@@ -25,29 +27,24 @@ class BST:
         self.Root = node # корень дерева, или None
 
 
-    def FindByKey_node(self, key, node):
+    def FindByKey_node(self, key, node) -> list:
         if key == node.NodeKey:
-            return [node, False, False]
+            return [node, True, False]
 
         if node.LeftChild is not None and key < node.NodeKey:
             return self.FindByKey_node(key, node.LeftChild)
 
-        elif node.RightChild is not None and key > node.NodeKey:
+        elif node.RightChild is not None and key >= node.NodeKey:
             return self.FindByKey_node(key, node.RightChild)
 
         elif node.LeftChild is None and key < node.NodeKey:
-            return [node, True, True]
+            return [node, False, True]
 
-        elif node.RightChild is None and key > node.NodeKey:
+        elif node.RightChild is None and key >= node.NodeKey:
             return [node, False, False]
 
-        elif node.Parent is None and node.LeftChild is None and node.RightChild is None :
-                return[node,None,False]
 
-
-
-
-    def FindNodeByKey(self, key):
+    def FindNodeByKey(self, key) -> list:
         # ищем в дереве узел и сопутствующую информацию по ключу
         # return None # возвращает BSTFind
 
@@ -64,7 +61,7 @@ class BST:
         find_node_list.append(BSTFnd.ToLeft)
         return find_node_list
 
-    def init_new_node(self, new_key, new_val, new_parent, ToLeft):
+    def init_new_node(self, new_key, new_val, new_parent, ToLeft) -> None:
         new_node = BSTNode(new_key, new_val, new_parent)
         if ToLeft == True:
             new_parent.LeftChild = new_node
@@ -72,16 +69,16 @@ class BST:
             new_parent.RightChild = new_node
 
 
-    def AddKeyValue(self, key, val):
+    def AddKeyValue(self, key, val) -> boolean:
         # добавляем ключ-значение в дерево
         find_node_list = self.FindNodeByKey(key)
         if find_node_list[1] == False:
             self.init_new_node(key, val, find_node_list[0], find_node_list[2])
 
         if find_node_list[1] == True:
-            self.init_new_node(key, val, find_node_list[0], find_node_list[2]) # если ключ уже есть
+            return False # если ключ уже есть
 
-    def FinMinMax(self, FromNode, FindMax):
+    def FinMinMax(self, FromNode, FindMax) -> BSTNode:
         # ищем максимальный/минимальный ключ в поддереве
         # возвращается объект типа BSTNode
         if FindMax is True and FromNode.RightChild is not None:
@@ -94,10 +91,12 @@ class BST:
         elif FindMax == False and FromNode.LeftChild is None:
             return FromNode
 
-    def DeleteNodeByKey(self, key):
+    def DeleteNodeByKey(self, key)-> boolean:
         # удаляем узел по ключу
+        if self.Root == None:
+            return False
         delet_node = self.FindNodeByKey(key)
-        if delet_node[1] == True or delet_node[1] == False:
+        if delet_node[1] == True:
             delet_node = delet_node[0]
 
             # если удаляем правый подкорень и есть только правый потомок
@@ -251,7 +250,7 @@ class BST:
         else:
             return False # если узел не найден
 
-    def counter(self, node, count_number):
+    def counter(self, node, count_number) -> int:
         count_number += 1
         if node.LeftChild is not None:
             count_number = self.counter(node.LeftChild, count_number)
@@ -259,7 +258,7 @@ class BST:
             count_number = self.counter(node.RightChild, count_number)
         return count_number
 
-    def Count(self):
+    def Count(self) -> int:
         try:
             return self.counter(self.Root, 0) # количество узлов в дереве
         except:
