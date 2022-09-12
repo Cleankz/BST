@@ -292,12 +292,17 @@ class BST:
 
 # node = BSTNode(20,random.randint(0,50),None)
 # tree = BST(node)
-# tree.DeleteNodeByKey(20)
-# print(tree.Count())
-# tree.AddKeyValue(19,5) # недобавляетпочему-торавные ключи
-# tree.AddKeyValue(14,5)
-# tree.AddKeyValue(16,5)
-# tree.AddKeyValue(13,5)
-# tree.DeleteNodeByKey(13)
-# tree.DeleteNodeByKey(14)
-# print(tree.Count())
+# # недобавляетпочему-торавные ключи
+# for i in range(20):
+#     tree.AddKeyValue(i,5)
+# for j in range(20):
+#     tree.DeleteNodeByKey(j)
+#     print(tree.Count())
+#     print("итер №----------------",j)
+
+
+# # tree.AddKeyValue(16,5)
+# # tree.AddKeyValue(13,5)
+# # tree.DeleteNodeByKey(13)
+# # tree.DeleteNodeByKey(14)
+# # print(tree.Count())
