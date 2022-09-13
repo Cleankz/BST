@@ -209,7 +209,7 @@ class BST:
                 delet_node.Parent = None
                 return True
 
-            #  если удаляем правый подкорень и есть оба потомка
+            # ? если удаляем правый подкорень и есть оба потомка
             elif delet_node.Parent is not None\
                 and delet_node.RightChild is not None\
                 and delet_node.LeftChild is not None\
@@ -217,8 +217,11 @@ class BST:
                 new_node = self.FinMinMax(delet_node.RightChild, False)
                 new_node.Parent = delet_node.Parent
                 new_node.LeftChild = delet_node.LeftChild
+                new_node.RightChild = delet_node.RightChild
                 delet_node.LeftChild.Parent = new_node
-                delet_node.Parent.RightChild = new_node
+                delet_node.RightChild.Parent = new_node
+                delet_node.Parent.RightChild = new_node # есть отличие
+                delet_node.RightChild.Leftchild = None
                 delet_node.Parent = None
                 return True
 
