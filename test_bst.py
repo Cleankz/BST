@@ -91,18 +91,29 @@ class MyTests(unittest.TestCase):
         self.assertEqual(tree.FindNodeByKey(50566).NodeHasKey,False)
 
     def test_count(self):
-        root = BSTNode(20,random.randint(0,50),None)
+        root = BSTNode(8,random.randint(0,50),None)
         tree = BST(root)
-        self.assertEqual(tree.Count(),1)
-        tree.DeleteNodeByKey(20)
-        self.assertEqual(tree.Count(),0)
+        self.assertEqual(tree.Count(),1) # проверяем что узел 1
 
-        tree.AddKeyValue(19,random.randint(0,50))
-        tree.AddKeyValue(21,random.randint(0,50))
-        self.assertEqual(tree.Count(),2)
 
-        tree.DeleteNodeByKey(21)
-        self.assertEqual(tree.Count(),1)
+        tree.AddKeyValue(4,random.randint(0,50))
+        tree.AddKeyValue(12,random.randint(0,50))
+        tree.AddKeyValue(2,random.randint(0,50))
+        tree.AddKeyValue(6,random.randint(0,50))
+        tree.AddKeyValue(1,random.randint(0,50))
+        tree.AddKeyValue(3,random.randint(0,50))
+        tree.AddKeyValue(5,random.randint(0,50))
+        tree.AddKeyValue(7,random.randint(0,50))
+        tree.AddKeyValue(10,random.randint(0,50))
+        tree.AddKeyValue(14,random.randint(0,50))
+        tree.AddKeyValue(9,random.randint(0,50))
+        tree.AddKeyValue(11,random.randint(0,50))
+        tree.AddKeyValue(13,random.randint(0,50))
+        tree.AddKeyValue(15,random.randint(0,50))
+        self.assertEqual(tree.Count(),15)
+        tree.DeleteNodeByKey(1)
+        tree.DeleteNodeByKey(12)
+        self.assertEqual(tree.Count(),13)
 
 if __name__ == '__main__':
     unittest.main()
