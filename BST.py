@@ -202,10 +202,22 @@ class BST:
                 and delet_node.LeftChild is not None\
                 and delet_node.NodeKey < delet_node.Parent.NodeKey: # левый подкорень
                 new_node = self.FinMinMax(delet_node.RightChild, False)
+                if new_node is new_node.Parent.LeftChild:
+                    new_node.Parent.LeftChild = None
+                    delet_node.RightChild.Parent = new_node
+                if new_node is new_node.Parent.RightChild:
+                    new_node.Parent.RightChild = None
+                    new_node.Parent = delet_node.Parent
+                    new_node.LeftChild = delet_node.LeftChild
+                    delet_node.Parent.LeftChild = new_node# есть отличие
+                    delet_node.LeftChild.Parent = new_node
+                    delet_node.Parent = None
+                    return True
                 new_node.Parent = delet_node.Parent
                 new_node.LeftChild = delet_node.LeftChild
+                new_node.RightChild = delet_node.RightChild
                 delet_node.LeftChild.Parent = new_node
-                delet_node.Parent.LeftChild = new_node
+                delet_node.Parent.LeftChild = new_node#??????????????
                 delet_node.Parent = None
                 return True
 
@@ -215,13 +227,21 @@ class BST:
                 and delet_node.LeftChild is not None\
                 and delet_node.NodeKey > delet_node.Parent.NodeKey: # правый подкорень
                 new_node = self.FinMinMax(delet_node.RightChild, False)
+                if new_node is new_node.Parent.LeftChild:
+                    new_node.Parent.LeftChild = None
+                    delet_node.RightChild.Parent = new_node
+                if new_node is new_node.Parent.RightChild:
+                    new_node.Parent = delet_node.Parent
+                    new_node.LeftChild = delet_node.LeftChild
+                    delet_node.LeftChild.Parent = new_node
+                    delet_node.Parent.RightChild = new_node # есть отличие
+                    delet_node.Parent = None
+                    return True
                 new_node.Parent = delet_node.Parent
                 new_node.LeftChild = delet_node.LeftChild
                 new_node.RightChild = delet_node.RightChild
-                delet_node.LeftChild.Parent = new_node
-                delet_node.RightChild.Parent = new_node
                 delet_node.Parent.RightChild = new_node # есть отличие
-                delet_node.RightChild.Leftchild = None
+                delet_node.LeftChild.Parent = new_node
                 delet_node.Parent = None
                 return True
 
