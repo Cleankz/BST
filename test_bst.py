@@ -96,9 +96,13 @@ class MyTests(unittest.TestCase):
         self.assertEqual(tree.Count(),1)
         tree.DeleteNodeByKey(20)
         self.assertEqual(tree.Count(),0)
+
         tree.AddKeyValue(19,random.randint(0,50))
         tree.AddKeyValue(21,random.randint(0,50))
         self.assertEqual(tree.Count(),2)
+
+        tree.DeleteNodeByKey(21)
+        self.assertEqual(tree.Count(),1)
 
 if __name__ == '__main__':
     unittest.main()
