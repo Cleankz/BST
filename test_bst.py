@@ -111,7 +111,7 @@ class MyTests(unittest.TestCase):
         tree.AddKeyValue(13,random.randint(0,50))
         tree.AddKeyValue(15,random.randint(0,50))
         self.assertEqual(tree.Count(),15)
-        tree.DeleteNodeByKey(1)
+        tree.DeleteNodeByKey(4)
         tree.DeleteNodeByKey(12)
         self.assertEqual(tree.Count(),13)
 
