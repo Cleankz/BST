@@ -110,6 +110,7 @@ class BST:
                 and delet_node.Parent.LeftChild is None: # правый подкорень
                 delet_node.Parent.RightChild = delet_node.RightChild
                 delet_node.RightChild.Parent = delet_node.Parent
+                delet_node.Parent = None
                 return True
 
             # если удаляем левый подкорень и есть только правый потомок
@@ -119,6 +120,7 @@ class BST:
                 and delet_node.Parent.RightChild is None: # левый подкорень
                 delet_node.Parent.LeftChild = delet_node.RightChild
                 delet_node.RightChild.Parent = delet_node.Parent
+                delet_node.Parent = None
                 return True
 
             elif delet_node.Parent is not None \
@@ -127,6 +129,7 @@ class BST:
                 and delet_node.Parent.RightChild is None: # левый подкорень
                 delet_node.Parent.LeftChild = delet_node.RightChild
                 delet_node.RightChild.Parent = delet_node.Parent
+                delet_node.Parent = None
                 return True
 
             # если удаляем правый подкорень и есть только левый потомок
@@ -136,6 +139,7 @@ class BST:
                 and delet_node.Parent.LeftChild is None: # правый подкорень
                 delet_node.Parent.RightChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = delet_node.Parent
+                delet_node.Parent = None
                 return True
 
             # если удаляем левый подкорень и есть только левый потомок
@@ -145,6 +149,7 @@ class BST:
                 and delet_node.Parent.RightChild is None: # левый подкорень
                 delet_node.Parent.LeftChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = delet_node.Parent
+                delet_node.Parent = None
                 return True
 
 
@@ -154,6 +159,7 @@ class BST:
                 and delet_node.LeftChild is None:
                 self.Root = delet_node.RightChild
                 delet_node.RightChild.Parent = None
+                delet_node.Parent = None
                 return True
 
             # если удаляем единственный!корень и есть только левый потомок
@@ -162,6 +168,7 @@ class BST:
                 and delet_node.LeftChild is not None:
                 self.Root = delet_node.LeftChild
                 delet_node.LeftChild.Parent = None
+                delet_node.Parent = None
                 return True
 
             elif delet_node.Parent is not None\
@@ -169,6 +176,7 @@ class BST:
                 and delet_node.LeftChild is None\
                 and delet_node.Parent.LeftChild == delet_node:
                     delet_node.Parent.LeftChild = None
+                    delet_node.Parent = None
                     return True
 
             elif delet_node.Parent is not None\
@@ -176,6 +184,7 @@ class BST:
                 and delet_node.LeftChild is None\
                 and delet_node.Parent.RightChild == delet_node:
                     delet_node.Parent.RightChild = None
+                    delet_node.Parent = None
                     return True
 
 
@@ -197,6 +206,7 @@ class BST:
                 new_node.LeftChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = new_node
                 delet_node.Parent.LeftChild = new_node
+                delet_node.Parent = None
                 return True
 
             #  если удаляем правый подкорень и есть оба потомка
@@ -209,6 +219,7 @@ class BST:
                 new_node.LeftChild = delet_node.LeftChild
                 delet_node.LeftChild.Parent = new_node
                 delet_node.Parent.RightChild = new_node
+                delet_node.Parent = None
                 return True
 
 
@@ -263,11 +274,13 @@ class BST:
             # 11 если удаляем левого потомка
             elif delet_node.Parent is self.Root and self.Root.LeftChild == delet_node:
                 self.Root.LeftChild = None
+                self.Root.LeftChild.Parent = None
                 return True
 
             # 12 если удаляем правого  потомка
             elif delet_node.Parent is self.Root and self.Root.RightChild == delet_node:
                 self.Root.RightChild = None
+                self.Root.RightChild.Parent = None
                 return True
 
         else:
@@ -285,10 +298,7 @@ class BST:
 
     def Count(self) -> int:
         return self.counter(self.Root, 0) # количество узлов в дереве
-        # try:
-        #     return self.counter(self.Root, 0) # количество узлов в дереве
-        # except:
-        #     return 0
+
 
 # node = BSTNode(10,random.randint(0,50),None)
 # tree = BST(node)
