@@ -322,11 +322,103 @@ class BST:
     def Count(self) -> int:
         return self.counter(self.Root, 0) # количество узлов в дереве
 
+    def WideAllNodes(self): #в ширину
+        if self.Root!=None:
+            parents=[]
+            children=[]
+            output=[]
+            output.append(self.Root)
+            parents.append(self.Root)
+            while parents!=[]:
+                for everynode in parents:
+                    if everynode.LeftChild!=None:
+                        children.append(everynode.LeftChild)
+                        output.append(everynode.LeftChild)
+                    else:
+                        pass
+                    if everynode.RightChild!=None:
+                        children.append(everynode.RightChild)
+                        output.append(everynode.RightChild)
+                    else:
+                        pass
+                parents.clear()
+                for everynode in children:
+                    if everynode!=None:
+                        parents.append(everynode)
+                    else:
+                        pass
+                children.clear()
+            output=tuple(output)
+            return output
 
+
+
+    def DeepAllNodes(self,par=0,Roots=[],Q_tys=[]):
+        #Обход дерева в глубину
+        Roots.append(self.Root)
+        Q_tys.append(self.Count())
+       # print(Roots)
+       # print(Q_tys)
+        node=self.Root
+        res=[]
+        parent=node
+        if par==0:
+            if node.LeftChild!=None:
+                self.Root=self.Root.LeftChild
+                res=self.DeepAllNodes(par=0)
+            res.append(node)
+            if node.RightChild!=None:
+                self.Root=parent.RightChild
+                res=res+self.DeepAllNodes(par=0)
+        elif par==1:
+            if node.LeftChild!=None:
+                self.Root=self.Root.LeftChild
+                res=self.DeepAllNodes(par=1)
+            if node.RightChild!=None:
+                self.Root=parent.RightChild
+                res=res+self.DeepAllNodes(par=1)
+            res.append(node)
+        elif par==2:
+            res.append(node)
+            if node.LeftChild!=None:
+                self.Root=self.Root.LeftChild
+                res=res+self.DeepAllNodes(par=2)
+            if node.RightChild!=None:
+                self.Root=parent.RightChild
+                res=res+self.DeepAllNodes(par=2)
+        if len(res)==Q_tys[0]:
+            self.Root=Roots[0]
+            Roots.clear()
+            Q_tys.clear()
+            out=tuple(res)
+            return out
+        else:
+            return res
+
+# root = BSTNode(8,random.randint(0,50),None)
+# tree = BST(root)
+
+# tree.AddKeyValue(4,random.randint(0,50))
+# tree.AddKeyValue(12,random.randint(0,50))
+# tree.AddKeyValue(2,random.randint(0,50))
+# tree.AddKeyValue(6,random.randint(0,50))
+# tree.AddKeyValue(1,random.randint(0,50))
+# tree.AddKeyValue(3,random.randint(0,50))
+# tree.AddKeyValue(5,random.randint(0,50))
+# tree.AddKeyValue(7,random.randint(0,50))
+# tree.AddKeyValue(10,random.randint(0,50))
+# tree.AddKeyValue(14,random.randint(0,50))
+# tree.AddKeyValue(9,random.randint(0,50))
+# tree.AddKeyValue(11,random.randint(0,50))
+# tree.AddKeyValue(13,random.randint(0,50))
+# tree.AddKeyValue(15,random.randint(0,50))
+
+# print(tree.DeepAllNodes(2))
 # node = BSTNode(10,random.randint(0,50),None)
 # tree = BST(node)
 # for i in range(9,0,-1):
 #     tree.AddKeyValue(i,5)
+# print(tree.DeepAllNodes(1))
 # tree.AddKeyValue(11,5)
 # print(tree.Count())
 # tree.DeleteNodeByKey(8)
